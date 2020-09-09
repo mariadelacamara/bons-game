@@ -47,45 +47,46 @@ class GameBoard extends Component {
   }
 
   handleTurn = () => {
-    const { gameId, selectedCard } = this.state
+    const { gameId, selectedCard, monsterData, playerData } = this.state;
+    const { toggleModal } = this.props;
+
     this.setState({ loadingGame: true, loadingMonster: true, loadingPlayer: true })
+    
     playTurn(gameId, selectedCard || '').then((response) => {
       const { game, monsterEffect } = response.data;
-      this.setState(
-        { gameInfo: game, monsterEffect: monsterEffect },
-        () => {
-          const { monsterEffect } = this.state
-          toast.error(
-            `Monster effect: 
-              ${monsterEffect.effect} : ${monsterEffect.value}
-              ${monsterEffect.effect === 'HORROR' ? LOST_TURN : ''}
-            `)
-          this.setState({ turnLost: monsterEffect.effect === 'HORROR' });
-        }
-      )
-      const { monsterData, playerData, gameInfo } = this.state
+
+      toast.error(
+        `Monster effect: ${monsterEffect.effect} : ${monsterEffect.value}
+        ${monsterEffect.effect === 'HORROR' ? LOST_TURN : ''}
+      `)
+
+      if (game.turnsLeft === 0) return toggleModal();
+
       const promises = [getMonsterById(monsterData.id), getPlayerById(playerData.id)];
-      if (selectedCard) { promises.push(getCards(playerData.id)) }
-      Promise.all(promises).then(([resMonster, resPlayer, resCards]) =>
-        this.setState(
-          (prevState => ({
-            monsterData: resMonster.data,
-            playerData: resPlayer.data,
-            loadingPlayer: false,
-            loadingMonster: false,
-            cards: resCards ? resCards.data.slice(0, 3) : prevState.cards,
-            selectedCard: '',
-            loadingGame: false
-          })),
-          () => {
-            if (gameInfo.turnsLeft === 0 || monsterData.hp === 0 || playerData.hp === 0) {
-              const { toggleModal } = this.props;
-              toggleModal();
-            }
+        
+      if(selectedCard) {
+        promises.push(getCards(playerData.id))
+      }
+  
+      Promise.all(promises).then(([resMonster, resPlayer, resCards]) => {
+        this.setState(prevState => ({ 
+          monsterData: resMonster.data, 
+          playerData: resPlayer.data, 
+          loadingPlayer: false, 
+          loadingMonster: false,
+          cards: resCards ? resCards.data.slice(0,3) : prevState.cards,
+          selectedCard: '',
+          loadingGame: false,
+          gameInfo: game,
+          turnLost: monsterEffect.effect === 'HORROR'
+        }), () => {
+          const { monsterData, playerData } = this.state;
+          if (monsterData.hp === 0 || playerData.hp === 0) {
+            toggleModal();
           }
-        )
-      ).catch(e => console.log(e))
-    }).catch(e => console.log('fail playTurn', e))
+        })
+      }).catch(e => console.log(e))
+    })
   }
 
   render() {
