@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { bool, string, func } from 'prop-types';
 import Modal from 'react-modal';
+
 import { actionCreators as modalActions } from '../../../model/actions/modalActions';
 import { actionCreators as gameActions } from '../../../model/actions/gameActions';
 import closeIcon from '../../images/close.png'
@@ -36,5 +38,12 @@ const mapDispatchToProps = dispatch => ({
   toggleModal: () => dispatch(modalActions.toggleModal()),
   deleteGameId: () => dispatch(gameActions.setGameId(null))
 });
+
+GameModal.propTypes = {
+  toggleModal: func,
+  deleteGameId: func,
+  show: bool,
+  message: string
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameModal);

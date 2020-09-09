@@ -28,7 +28,6 @@ function GameBoardLayout({
   return(<Fragment>
     <Navbar />
     <div className={styles.container}>
-      {console.log(loadingMonster, loadingPlayer, loadingGame)}
       {loadingGame || loadingMonster || loadingPlayer ? <Spinner /> :
         <Fragment>
           <div className={styles.boardContainer}>

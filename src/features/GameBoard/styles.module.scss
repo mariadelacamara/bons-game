@@ -150,4 +150,10 @@
     align-items: center;
     height: 100%;
   }
+
+  .playerName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100px;
+  }
 }
