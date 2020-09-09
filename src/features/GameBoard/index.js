@@ -32,7 +32,7 @@ class GameBoard extends Component {
     getPlayer(gameId).then((response) => {
       this.setState({ playerData: response.data })
       getCards(response.data.id).then((response) => {
-        this.setState({ cards: response.data.slice(0,3), loadingPlayer: false })
+        this.setState({ cards: response.data.slice(0, 3), loadingPlayer: false })
       }).catch(e => console.log('Error getCards', e))
     }).catch(e => console.log('Error getPlayer', e))
     getMonster(gameId).then((response) => {
@@ -50,8 +50,9 @@ class GameBoard extends Component {
     const { gameId, selectedCard } = this.state
     this.setState({ loadingGame: true, loadingMonster: true, loadingPlayer: true })
     playTurn(gameId, selectedCard || '').then((response) => {
+      const { game, monsterEffect } = response.data;
       this.setState(
-        { gameInfo: response.data.game, monsterEffect: response.data.monsterEffect },
+        { gameInfo: game, monsterEffect: monsterEffect },
         () => {
           const { monsterEffect } = this.state
           toast.error(
@@ -59,21 +60,15 @@ class GameBoard extends Component {
               ${monsterEffect.effect} : ${monsterEffect.value}
               ${monsterEffect.effect === 'HORROR' ? LOST_TURN : ''}
             `)
-          if (monsterEffect.effect === 'HORROR') {
-            this.setState({
-              turnLost: true
-            });
-          } else {
-            this.setState({ turnLost: false })
-          }
+          this.setState({ turnLost: monsterEffect.effect === 'HORROR' });
         }
-        )
+      )
       const { monsterData, playerData, gameInfo } = this.state
       const promises = [getMonsterById(monsterData.id), getPlayerById(playerData.id)];
       if (selectedCard) { promises.push(getCards(playerData.id)) }
       Promise.all(promises).then(([resMonster, resPlayer, resCards]) =>
         this.setState(
-          ( prevState => ({
+          (prevState => ({
             monsterData: resMonster.data,
             playerData: resPlayer.data,
             loadingPlayer: false,

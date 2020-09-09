@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { string, func } from 'prop-types';
 import CreateGame from '../features/CreateGame';
 import GameBoard from '../features/GameBoard';
 import PublicRoute from '../shared/components/PublicRoute';
@@ -35,5 +36,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setGameId: (gameId) => dispatch(gameActions.setGameId(gameId))
 })
+
+
+App.propTypes = {
+  setGameId: func,
+  gameId: string
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

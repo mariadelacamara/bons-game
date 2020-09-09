@@ -1,7 +1,7 @@
 import { actions } from '../actionsTypes/gameActionsType';
 
 const initialState = {
-  gameId: null,
+  gameId: '',
   loading: false,
   error: ''
 }
