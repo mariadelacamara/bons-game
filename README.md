@@ -47,3 +47,13 @@ Finally, if you run outs of turns or your hp reach 0, you Lose. If you defeat th
 Good luck!
 
 ### Additional comments
+
+- Ya sea que estando logueada ingreso a un game que cerre la pestaña, o bien luego de que el endpoint de get cards no me retorne cards porque tengo horror effect, el siguiente paso es retornarme una card extra, por eso hago un slice en cards para que siempre me envie las primeras tres. 
+- Horror effect segun las especificaciones, te deja sin un turno, consecuencia que handleo desde el client side. 
+  Sin embargo viene con un valor el cual no sabia si significaba que tenia que hacer la misma logica que hace el back para el calculo del daño o no. 
+- Realice loadings separados por si se quiere que se muestren en un futuro spinners de carga por bloques. 
+Falto realizar:
+- responsive
+- shape de proptypes object y arrayOf. 
+- manejar todos los llamados a la api desde el reducer utilizando middleware. A modo de ejemplo lo hice con Create game.
+
