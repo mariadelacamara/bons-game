@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import { bool, string, func, Object, Array } from 'prop-types';
+import { bool, string, func, object, array } from 'prop-types';
 import Navbar from '../../shared/components/Navbar';
 import Player from './Player';
 import Card from './Card';
@@ -28,6 +28,7 @@ function GameBoardLayout({
   return(<Fragment>
     <Navbar />
     <div className={styles.container}>
+      {console.log(loadingMonster, loadingPlayer, loadingGame)}
       {loadingGame || loadingMonster || loadingPlayer ? <Spinner /> :
         <Fragment>
           <div className={styles.boardContainer}>
@@ -61,10 +62,10 @@ function GameBoardLayout({
 }
 
 GameBoardLayout.propTypes = {
-  gameInfo: Object,
-  monsterData: Object,
-  playerData: Object,
-  cards: Array,
+  gameInfo: object,
+  monsterData: object,
+  playerData: object,
+  cards: array,
   loadingGame: bool,
   loadingMonster: bool,
   loadingPlayer: bool,
@@ -72,7 +73,7 @@ GameBoardLayout.propTypes = {
   turnLost: bool,
   showModal: bool,
   handleSelectCard: func,
-  handleTurn: bool
+  handleTurn: func
 };
 
 export default GameBoardLayout;
