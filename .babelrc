@@ -1,0 +1,13 @@
+{
+    "plugins": [
+        ["react-css-modules", {
+            "option": "value"
+          }],
+      ["module-resolver", {
+        "root": ["./src"],
+        "alias": {
+          "~features": ".src/features"
+        }
+      }]
+    ]
+  }

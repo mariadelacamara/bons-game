@@ -1,0 +1,21 @@
+@import '../../styles/variables/colors';
+
+  .content {
+    background-color: $grey;
+    border: 3px solid $dark-grey;
+    position: absolute;
+    top: 400px;
+    left: 40px;
+    right: 40px;
+    bottom: 100px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    outline: none;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .icon {
+    width: 30px;
+  }

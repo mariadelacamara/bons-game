@@ -1,0 +1,73 @@
+@import './variables/colors';
+
+%formtag {
+    align-items: center;
+    color: $text-color;
+    display: flex;
+    font-size: 15px;
+    font-weight: bold;
+    justify-content: center;
+    text-transform: uppercase;
+    padding: 15px 40px;
+    white-space: nowrap;
+    border: 1px solid;
+    border-radius: 5px;   
+  }
+  
+  
+  .button {
+    @extend %formtag;
+    text-align: center;
+    background-color: $turquise;
+    border-color: $turquise;
+    cursor: pointer;
+    &:hover {
+      background-color: $text-color;
+      color: $turquise;
+      border: 1px solid $turquise;
+    }
+  }
+
+  .input {
+    @extend %formtag;
+    text-align: left;
+    background-color: $light-grey;
+    border-color: $light-grey;
+  }
+
+  %text {
+    color: $text-color;
+  }
+
+  .normal {
+    @extend %text;
+    font-size: 14px;
+  }
+
+  .big {
+    @extend %text;
+    font-size: 20px;
+  }
+
+  .extra-big {
+    @extend %text;
+    font-size: 40px;
+  }
+
+  .bold-normal {
+    @extend .normal;
+    font-weight: bold;
+  }
+
+  .bold-big {
+    @extend .big;
+      font-weight: bold;
+   }
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+
+  .full-width {
+    width: 100%;
+  }
