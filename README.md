@@ -2,67 +2,48 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+To build the examples locally, run:
 
-### `yarn start`
+```bash
+npm install
+npm start
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Then open [`localhost:3000`](http://localhost:3000) in a browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Game rules & demo
 
-### `yarn build`
+First, you have to login only with your name. The name has to be longer than 2 characters, shorter than 30 and cant be only space or special characters.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Captura de pantalla de 2020-09-09 17-45-57](https://user-images.githubusercontent.com/43348411/92654577-66c73880-f2c6-11ea-97b4-86f46e1a6697.png)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+At least you won, lose or click the Exit button, your session will remain.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Select a card and click End Turn.
+The monster effect will be informed to you with a toast at the top of the page. 
+You have to defeat monster using your damage cards, defends yourself using shields o heal using heal cards.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Captura de pantalla de 2020-09-09 17-46-16](https://user-images.githubusercontent.com/43348411/92654822-cc1b2980-f2c6-11ea-91ac-fa58a7ba2662.png)
+![Captura de pantalla de 2020-09-09 17-46-19](https://user-images.githubusercontent.com/43348411/92654832-cfaeb080-f2c6-11ea-9e71-5efcd30baaae.png)
+![Captura de pantalla de 2020-09-09 17-46-22](https://user-images.githubusercontent.com/43348411/92654844-d3dace00-f2c6-11ea-88a3-fc97681c8d95.png)
+![Captura de pantalla de 2020-09-09 17-46-27](https://user-images.githubusercontent.com/43348411/92654943-f967d780-f2c6-11ea-9989-0e2e04f23e12.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+If the monster throug an horror effect to you, you lost one turn and you have to click End turn without selecting any cards.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Captura de pantalla de 2020-09-09 17-46-37](https://user-images.githubusercontent.com/43348411/92654961-ff5db880-f2c6-11ea-9b2a-0376c313586a.png)
 
-## Learn More
+Otherwise, you will allways have to select a card in order to End Turn.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Finally, if you run outs of turns or your hp reach 0, you Lose. If you defeat the monster before all that, you win!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Captura de pantalla de 2020-09-09 17-47-30](https://user-images.githubusercontent.com/43348411/92654969-0258a900-f2c7-11ea-96c2-6e4ea1cf0e7b.png)
 
-### Code Splitting
+Good luck!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Additional comments
